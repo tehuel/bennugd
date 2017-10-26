@@ -1,0 +1,15 @@
+*.o
+*.lo
+*.la
+*.log
+
+config.status
+Makefile
+libtool
+bgdc
+bgdi
+moddesc
+
+bin/
+*.deps/
+*.libs/
