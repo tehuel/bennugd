@@ -1,0 +1,12 @@
+language: c
+
+before_install:
+  - sudo dpkg --add-architecture i386
+  - sudo apt-get -qq update
+  - sudo apt-get install -y gcc-multilib libc6:i386 libstdc++6:i386 libncurses5:i386 libgl1-mesa-dev:i386 libglib2.0-dev:i386
+  - sudo apt-get install -y zlib1g-dev:i386 libpng12-dev:i386 openssl:i386 libssl-dev:i386 libssl1.0.0:i386 libsdl1.2-dev:i386 libsdl-mixer1.2-dev:i386
+
+script:
+    - chmod +x core/configure modules/configure tools/moddesc/configure
+    #- ./build-linux.sh release
+    - CFLAGS="-m32 -I/usr/include/i386-linux-gnu" LDFLAGS=-L/usr/lib/i386-linux-gnu ./build-linux.sh release
